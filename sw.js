@@ -1,5 +1,5 @@
 /* Golden Vision · guarda as telas do app para abrir rápido. Os dados sempre vêm do servidor. */
-const CACHE = "gv-plataforma-v1";
+const CACHE = "gv-plataforma-v2";
 const ARQUIVOS = ["./", "index.html", "manifest.webmanifest", "icone-192.png", "icone-512.png", "apple-touch-icon.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ARQUIVOS)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
